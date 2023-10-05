@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>SureShot</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <body>
+    <div class="controls">
+      <button
+        type="button"
+        data-bind="click: toggleArmStatus, text: isArmed() ? 'Disarm' : 'Arm', css: { 'btn-danger': isArmed(), 'btn-success': !isArmed() }"
+        class="btn"
+      ></button>
+
+      <button
+        type="button"
+        data-bind="click: fire, disable: !isArmed()"
+        class="btn btn-danger"
+        style="height: 200px"
+      >
+        Fire!
+      </button>
+
+      <div
+        style="
+          flex-wrap: wrap;
+          flex-direction: column;
+          display: flex;
+          margin-top: 60px;
+        "
+      >
+        <div>
+          <span
+            class="pill"
+            data-bind="text: isConnected() ? 'Connected' : 'Disconnected', css: { 'pill-success': isConnected(), 'pill-danger': !isConnected() }"
+          >
+          </span>
+        </div>
+        <h7>IP of esp8266:</h7>
+        <input
+          type="text"
+          data-bind="value: serverAddress"
+          class="input"
+          style="width: 10em"
+        />
+      </div>
+
+      <script
+        id="knockout"
+        defer
+        src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.min.js"
+        ko-here
+      ></script>
+
+      <script defer src="./dist/index.js" src-here></script>
+    </div>
+  </body>
+
+  <style>
+    .controls {
+      font-size: 15px;
+      margin: 10px;
+      padding: 10px;
+
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      justify-items: center;
+      justify-content: flex-start;
+    }
+
+    .controls > * {
+      margin: 15px 0px 15px 0px;
+    }
+
+    body {
+      background-color: rgb(19, 19, 19);
+    }
+
+    body * {
+      font-family: "Roboto Mono", monospace;
+      color: white;
+    }
+
+    .title {
+      margin: 1px;
+      margin-bottom: 0px;
+    }
+
+    .palette-controls {
+      margin-top: 3px;
+    }
+
+    .btn {
+      outline: 0px;
+      height: 3em;
+      padding: 8;
+      border-radius: 8px;
+      border: none;
+    }
+
+    .btn.btn-dangerous {
+      background-color: var(--danger);
+    }
+
+    .btn.btn-success {
+      background-color: var(--success);
+    }
+
+    .btn.btn-primary {
+      background-color: var(--primary);
+    }
+
+    .pill {
+      outline: 0px;
+      padding-left: 8px;
+      padding-right: 8px;
+      border-radius: 20px;
+    }
+
+    .pill.pill-primary {
+      background-color: var(--primary);
+    }
+
+    .pill.pill-success {
+      background-color: var(--success);
+    }
+
+    .pill.pill-danger {
+      background-color: var(--danger);
+    }
+
+    .input {
+      background-color: var(--dark);
+    }
+
+    :root {
+      --primary: #007bff;
+      --secondary: #6c757d;
+      --success: #28a745;
+      --info: #17a2b8;
+      --warning: #ffc107;
+      --danger: #dc3545;
+      --light: #f8f9fa;
+      --dark: #343a40;
+    }
+  </style>
+</html>

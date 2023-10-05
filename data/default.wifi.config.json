@@ -1,0 +1,15 @@
+{
+    "ssid": "Sureshot",
+    "secret": "WeHaveLiftOff!", 
+    "numAps": 2,
+    "aps": [
+        {
+            "ssid": "[SSID]",
+            "secret": "[SECRET]"
+        },
+        {
+            "ssid": "[SSID]",
+            "secret": "[SECRET]"
+        }
+    ]
+}
